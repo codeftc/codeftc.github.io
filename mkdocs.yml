@@ -4,3 +4,4 @@ theme:
 nav:
   - Home: index.md
   - Introduction: intro.md
+  - Drivetrains: drivetrain.md

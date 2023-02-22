@@ -1,1 +1,1 @@
-The goal of this site is to document the fundamental tools necessary to start coding Java for the First Tech Challenge. This guide is intended for beginner coders, or those who are deciding step up from block coding. Basic proficiency in the Java programming language is recommended. 
+This guide serves as a reference for common tools and topics used when programming for the First Tech Challenge. 
