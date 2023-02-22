@@ -1,6 +1,10 @@
 site_name: codeftc
 theme:
   name: simple-blog
+  theme_style: dark
+  site_name_style: bold
+  title_style: bold
+  favicon: assets/favicon.ico
 nav:
   - Home: index.md
   - Introduction: intro.md
