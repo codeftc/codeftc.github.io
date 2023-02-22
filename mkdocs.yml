@@ -1,0 +1,6 @@
+site_name: codeftc
+theme:
+  name: simple-blog
+nav:
+  - Home: index.md
+  - Introduction: intro.md
