@@ -10,3 +10,4 @@ nav:
   - Introduction: intro.md
   - Drivetrains: drivetrain.md
   - Control Theory: control.md
+  - Closed Loop Control: closed-loop.md
