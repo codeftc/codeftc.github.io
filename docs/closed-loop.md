@@ -4,5 +4,5 @@ Closed loop control is used very commonly in FTC, and robotics in general. It is
 
 Below are some great resources that I recommend you look at when studying control theory:
 
-1. [CTRLALTFTC](https://www.ctrlaltftc.com/)
-2. [Control Theory Bible](https://file.tavsys.net/control/controls-engineering-in-frc.pdf)
+1. <a href="https://www.ctrlaltftc.com/" target="_blank">CTRLALTFTC</a> 
+2. <a href="https://file.tavsys.net/control/controls-engineering-in-frc.pdf" target="_blank">Control Theory Bible</a> 
