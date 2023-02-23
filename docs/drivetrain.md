@@ -98,3 +98,5 @@ public class MecanumDrive extends LinearOpMode {
     }
 }
 ```
+
+The mecanum drivetrain allows for much more freedom of movement, and makes quick manuevers during the teleop period possible.
