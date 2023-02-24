@@ -4,7 +4,7 @@ theme:
   theme_style: dark
   site_name_style: bold
   title_style: bold
-  favicon: assets/favicon.ico
+  favicon: /assets/favicon.ico
 nav:
   - Home: index.md
   - Navigate:
