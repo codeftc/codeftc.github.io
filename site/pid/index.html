@@ -5,19 +5,19 @@
             <meta http-equiv="X-UA-Compatible" content="IE=edge">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-            <meta name="description" content="None">
+            
             
             
 
             
-                <link  rel="icon" type="image/x-icon" href="assets/favicon.ico">
+                <link  rel="icon" type="image/x-icon" href="../assets/favicon.ico">
             
-            <title>codeftc</title>
+            <title>PID Control - codeftc</title>
             <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Mono:400,700">
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-            <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-            <link rel="stylesheet" href="assets/stylesheets/theme.css">
-            <link rel="stylesheet" href="assets/stylesheets/styles.css">
+            <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+            <link rel="stylesheet" href="../assets/stylesheets/theme.css">
+            <link rel="stylesheet" href="../assets/stylesheets/styles.css">
             
             
                 
@@ -59,41 +59,41 @@
         <li class="nav-item" id="component-menu">
             <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class=" active 
-                            nav-link text-gray text-decoration-none" href=".">[Home]</a>
+                            <a class="
+                            nav-link text-gray text-decoration-none" href="..">[Home]</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="
+                            <a class=" active 
                             nav-link dropdown-toggle text-decoration-none" href="#" data-bs-toggle="dropdown">[Navigate]</a>
                             <ul class="dropdown-menu">
                                     <!-- block dropdown-menu -->
     <li>
-        <a href="intro/" class="dropdown-item text-decoration-none ">Introduction</a>
+        <a href="../intro/" class="dropdown-item text-decoration-none ">Introduction</a>
     </li>
 <!-- endblock -->
                                     <!-- block dropdown-menu -->
     <li>
-        <a href="drivetrain/" class="dropdown-item text-decoration-none ">Drivetrains</a>
+        <a href="../drivetrain/" class="dropdown-item text-decoration-none ">Drivetrains</a>
     </li>
 <!-- endblock -->
                                     <!-- block dropdown-menu -->
     <li>
-        <a href="control/" class="dropdown-item text-decoration-none ">Control Theory</a>
+        <a href="../control/" class="dropdown-item text-decoration-none ">Control Theory</a>
     </li>
 <!-- endblock -->
                                     <!-- block dropdown-menu -->
     <li>
-        <a href="closed-loop/" class="dropdown-item text-decoration-none ">Closed Loop Control</a>
+        <a href="../closed-loop/" class="dropdown-item text-decoration-none ">Closed Loop Control</a>
     </li>
 <!-- endblock -->
                                     <!-- block dropdown-menu -->
     <li>
-        <a href="pid/" class="dropdown-item text-decoration-none ">PID Control</a>
+        <a href="./" class="dropdown-item text-decoration-none  active ">PID Control</a>
     </li>
 <!-- endblock -->
                                     <!-- block dropdown-menu -->
     <li>
-        <a href="roadrunner/" class="dropdown-item text-decoration-none ">Roadrunner</a>
+        <a href="../roadrunner/" class="dropdown-item text-decoration-none ">Roadrunner</a>
     </li>
 <!-- endblock -->
                             </ul>
@@ -122,14 +122,52 @@
     <article>
         <header>
             
-                <h1 class="bold title" id="component-title">Home</h1>
+                <h1 class="bold title" id="component-title">PID Control</h1>
             
         </header>
-        <p><p>This guide serves as a reference for common tools and topics used when programming for the First Tech Challenge. We hope that both beginner and more advanced teams can learn something from this.</p>
-<p>Contributors:</p>
-<p><a href="https://github.com/codeftc/codeftc.github.io/graphs/contributors" target="_blank">
-  <img src="https://contrib.rocks/image?repo=codeftc/codeftc.github.io" />
-</a></p></p>
+        <p><p>PID control is one of the most common control systems you will see in robotics, and FTC specifically. Three values need to be tuned (Proportional, Integral and Derivative) which alter the behavior of the controller. </p>
+<p>Earlier, we saw an example of a proportional controller, which can be seen modelled below:</p>
+<p><img alt="proportional controller diagram" src="https://www.tutorialspoint.com/control_systems/images/proportional_controller.jpg" /></p>
+<p>The Kp value is the only one altering the controller's input. Alternatively, a PID controller uses 2 more values, Ki and Kd. The PID controller can be modelled as seen below:</p>
+<p><img alt="PID controller" src="https://miro.medium.com/max/1400/1*K_yaMyOkUNJzBpjutSmpwQ.png" /></p>
+<p>To gain a comprehensive understanding of the math behind PID controllers, I recommend you watch <a href="https://www.youtube.com/watch?v=UR0hOmjaHp0" target="_blank">this</a> Youtube video series, which explains the fundamental mathematical concept very well.</p>
+<p>Lets go ahead and program a simple PID controller in Java:</p>
+<pre><code class="language-java">public class PID {
+    private double Kp;
+    private double Ki;
+    private double Kd;
+    private double integralSum = 0.0;
+    private double lastError = 0.0;
+
+    private ElapsedTime timer;
+
+    public PID(double p, double i, double d) {
+        Kp = p;
+        Ki = i;
+        Kd = d;
+        timer = new ElapsedTime();
+        timer.reset();
+    }
+
+    public double getValue(double error) {
+        double dT = timer.seconds();
+        double derivative = (error - lastError) / dT;
+
+        // sum all the error over time
+        integralSum += (error * dT);
+
+        // return the out value eg. motor power
+        double out = (Kp * error) + (Ki * integralSum) + (Kd * derivative);
+
+        lastError = error;
+        timer.reset();
+
+        return out;
+    }
+}
+</code></pre>
+<p>Although you can code your own PID controller like done above, I recommend you instead use the PID controller from FTCLib, a library for First Tech Challenge robotics. Follow the Kookybotz tutorial <a href="https://www.youtube.com/watch?v=E6H6Nqe6qJo&t=347s" target="_blank">video</a> to see how you can setup FTCLib in your project. </p>
+<p>A rule of thumb when programming is to never reinvent the wheel. There are tons of incredible libraries and tools out there for your use, created by the amazing FTC community. Why try to make something from scratch when you can use a pre-existing tool that will save you a lot of time?</p></p>
     </article>
 </section>
 <!-- endblock -->
@@ -139,13 +177,13 @@
                     <!-- block preview -->
         <div class="row row-cols-md-3 text-center pt-md-3" id="component-preview">
             <div class="col themed-grid-col">
-                <a rel="prev" class="nav-link disabled">
+                <a rel="prev" href="../closed-loop/" class="nav-link">
                     <i class="fa fa-arrow-left"></i> Previous
                 </a>
             </div>
             <div class="col themed-grid-col"></div>
             <div class="col themed-grid-col">
-                <a rel="next" href="intro/" class="nav-link">
+                <a rel="next" href="../roadrunner/" class="nav-link">
                     Next <i class="fa fa-arrow-right"></i>
                 </a>
             </div>
@@ -175,9 +213,9 @@
             
         </div>
     
-        <script src="assets/js/jquery-3.3.1.slim.min.js""></script>
-        <script src="assets/js/bootstrap.bundle.min.js""></script>
-        <script src="assets/js/theme.js""></script>
+        <script src="../assets/js/jquery-3.3.1.slim.min.js""></script>
+        <script src="../assets/js/bootstrap.bundle.min.js""></script>
+        <script src="../assets/js/theme.js""></script>
     </body>
 
 </html>
