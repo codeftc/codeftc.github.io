@@ -9,6 +9,7 @@ nav:
   - Home: index.md
   - Navigate:
     - Introduction: intro.md
+    - Organization: organization.md
     - Drivetrains: drivetrain.md
     - Control Theory: control.md
     - Closed Loop Control: closed-loop.md

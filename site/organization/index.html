@@ -12,7 +12,7 @@
             
                 <link  rel="icon" type="image/x-icon" href="/assets/favicon.ico">
             
-            <title>Closed Loop Control - codeftc</title>
+            <title>Organization - codeftc</title>
             <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Mono:400,700">
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
             <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
@@ -73,7 +73,7 @@
 <!-- endblock -->
                                     <!-- block dropdown-menu -->
     <li>
-        <a href="../organization/" class="dropdown-item text-decoration-none ">Organization</a>
+        <a href="./" class="dropdown-item text-decoration-none  active ">Organization</a>
     </li>
 <!-- endblock -->
                                     <!-- block dropdown-menu -->
@@ -88,7 +88,7 @@
 <!-- endblock -->
                                     <!-- block dropdown-menu -->
     <li>
-        <a href="./" class="dropdown-item text-decoration-none  active ">Closed Loop Control</a>
+        <a href="../closed-loop/" class="dropdown-item text-decoration-none ">Closed Loop Control</a>
     </li>
 <!-- endblock -->
                                     <!-- block dropdown-menu -->
@@ -127,15 +127,23 @@
     <article>
         <header>
             
-                <h1 class="bold title" id="component-title">Closed Loop Control</h1>
+                <h1 class="bold title" id="component-title">Organization</h1>
             
         </header>
-        <p><p>Closed loop control is used very commonly in FTC, and robotics in general. It is used to have full control over systems on the robot, and make sure they are performing the way the programmer intended. There are a few important concepts to cover when it comes to closed-loop control, including PID, Feedforward, Pure pursuit, etc.</p>
-<h2 id="resources">Resources</h2>
-<p>Below are some great resources that I recommend you look at when studying control theory:</p>
-<p><a href="https://www.ctrlaltftc.com/" target="_blank">CTRLALTFTC</a></p>
-<p><a href="https://file.tavsys.net/control/controls-engineering-in-frc.pdf" target="_blank">Control Theory Bible</a> </p>
-<p><a href="https://www.youtube.com/watch?v=E6H6Nqe6qJo&t=347s" target="_blank">Kookybotz PIDF Tutorial</a></p></p>
+        <p><p>Coding for the First Tech Challenge is usually an ongoing process. Revisions are made all the time to mirror the advancements in the robot over the course of the season. Because of this, it is highly important to remain organized when programming, to make sure that your code is readable for yourself, and more importantly for others. </p>
+<p>I cannot stress the importance of commenting your code. Even though it can be tedious, short comments explaining what parts of the code do go a long way. They help the original programmer quickly recall what the program does, and helps anyone else who is looking at the code understand what it does. </p>
+<p>In my opinion, the best way to organize code is by using OOP (Object Oriented Programming), or at least some concepts from the overall premise. The main thing to take away from this organization style is to separate the various subsystems of the robot into their own classes. </p>
+<p>This is an example of how I organize the subsystems in my team's codebase:</p>
+<p>subsystems<br />
+ ┣ Aligner.java<br />
+ ┣ Drive.java<br />
+ ┣ Intake.java<br />
+ ┣ Lift.java<br />
+ ┣ Odometry.java<br />
+ ┣ PID.java<br />
+ ┗ Robot.java  </p>
+<p>Each of the subsystems is a class that behaves independently from the other subsystems. The different classes are all instantiated in Robot.java, which serves as the overarching class.</p>
+<p>This way of organizing the code means that any singular subsystem can be instantiated when necessary, while maintaining its state across the codebase. Changes only need to be made in the above classes, and will affect any place where they are called. </p></p>
     </article>
 </section>
 <!-- endblock -->
@@ -145,13 +153,13 @@
                     <!-- block preview -->
         <div class="row row-cols-md-3 text-center pt-md-3" id="component-preview">
             <div class="col themed-grid-col">
-                <a rel="prev" href="../control/" class="nav-link">
+                <a rel="prev" href="../intro/" class="nav-link">
                     <i class="fa fa-arrow-left"></i> Previous
                 </a>
             </div>
             <div class="col themed-grid-col"></div>
             <div class="col themed-grid-col">
-                <a rel="next" href="../pid/" class="nav-link">
+                <a rel="next" href="../drivetrain/" class="nav-link">
                     Next <i class="fa fa-arrow-right"></i>
                 </a>
             </div>
