@@ -7,7 +7,10 @@ theme:
   favicon: assets/favicon.ico
 nav:
   - Home: index.md
-  - Introduction: intro.md
-  - Drivetrains: drivetrain.md
-  - Control Theory: control.md
-  - Closed Loop Control: closed-loop.md
+  - Navigate:
+    - Introduction: intro.md
+    - Drivetrains: drivetrain.md
+    - Control Theory: control.md
+    - Closed Loop Control: closed-loop.md
+    - PID Control: pid.md
+    - Roadrunner: roadrunner.md
