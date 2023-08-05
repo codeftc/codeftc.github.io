@@ -1,4 +1,4 @@
-  This guide serves as a reference for common tools and topics used when programming for the First Tech Challenge. We hope that both beginner and more advanced teams can learn something from this.
+  This guide serves as a reference for common tools and topics used when programming for the First Tech Challenge. 
 
 Contributors:
 
